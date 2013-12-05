@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Team Standings</title>
+<h1> Supporters' Shield Race </h1>
+</head>
+<body>
+
+
+<% @confs.each do |key, value| %>
+<h4>Supporters' Shield Race</h4>
+<table class="table table-striped table-condensed">
+  <thead>
+    <tr class ='pretty'>
+    <th><a href=''>#</th>
+    <th><a href=''>Club</th>
+    <th><a href=''>PTS</th>
+    <th><a href=''>GP</th>
+    <th><a href=''>PPG</th>
+    <th><a href=''>W</th>
+    <th><a href=''>L</th>
+    <th><a href=''>T</th>
+    <th><a href=''>GF</th>
+    <th><a href=''>GA</th>
+    <th><a href=''>GD</th>
+    <th><a href=''>HG</th>
+    <th><a href=''>HGD</th>
+    <th><a href=''>RG</th>
+    <th><a href=''>RGD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% value.each do |l, m| %>
+    <% l.each do |k,v| %>
+     <% if v[:id]==1 %>
+      <tr class="border_bottom_red">
+      <%else%>
+      <tr>
+      <%end%>      
+      <td> <%= v[:id] %></td>
+      <td> <%= v[:name] %></td>
+      <td> <%= v[:points].round(0) %></td>
+      <td> <%= v[:played].round(0) %></td>
+      <td> <%= (v[:points]/v[:played]).round(2) %></td>
+      <td> <%= v[:won] %></td>
+      <td> <%= v[:lost] %></td>
+      <td> <%= v[:ties] %></td>
+      <td> <%= v[:gFor] %></td>
+      <td> <%= v[:gAgt] %></td>
+      <td> <%= v[:gFor]-v[:gAgt] %></td>
+      <td> <%= v[:homeFor] %></td>
+      <td> <%= v[:homeFor]-v[:homeAgt] %></td>
+      <td> <%= v[:awayFor] %></td>
+      <td> <%= v[:awayFor]-v[:awayAgt] %></td>
+      </tr>
+    <%end%>
+   <%end%>
+  </tbody>
+</table>
+<%end%>
+
+<%=javascript_include_tag 'jquery.tablesorter' %>
+<script>
+  $(document).ready(function() 
+      { 
+          $(".table").tablesorter({ sortList: [[3,1], [5,1]] });
+          $("thead th").click(function(){ 
+            $(this).parents("table").find("tr").removeClass("border_bottom_red");
+          })
+      }
+  );
+</script>
+</body>
+</html>

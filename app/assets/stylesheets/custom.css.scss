@@ -48,6 +48,10 @@ h1 {
   text-align: center;
 }
 
+.bigtitle {
+  
+}
+
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
@@ -174,13 +178,14 @@ input {
 }
 
 
+tr.border_bottom_red td{
+  border-bottom: 2pt solid red;
+}
 
-
-
-
-
-
-
+.pretty{
+  background-color: #D0D0D0  ;
+  opacity: 0.5;
+}
 
 
 
