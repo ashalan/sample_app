@@ -12,7 +12,6 @@
 <table class="table table-striped table-condensed">
   <thead>
     <tr class ='pretty'>
-    <th><a href=''>#</th>
     <th><a href=''>Club</th>
     <th><a href=''>PTS</th>
     <th><a href=''>GP</th>
@@ -30,6 +29,7 @@
     </tr>
   </thead>
   <tbody>
+    <% i=1 %>
     <% value.each do |l, m| %>
     <% l.each do |k,v| %>
      <% if v[:id]==1 %>
@@ -37,7 +37,6 @@
       <%else%>
       <tr>
       <%end%>      
-      <td> <%= v[:id] %></td>
       <td> <%= v[:name] %></td>
       <td> <%= v[:points].round(0) %></td>
       <td> <%= v[:played].round(0) %></td>
@@ -53,6 +52,7 @@
       <td> <%= v[:awayFor] %></td>
       <td> <%= v[:awayFor]-v[:awayAgt] %></td>
       </tr>
+      <%i+=1%>
     <%end%>
    <%end%>
   </tbody>
