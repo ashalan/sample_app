@@ -78,9 +78,9 @@ class TeamsController < ApplicationController
   value.each do |l, m| 
     l.each do |k,v| 
       if v[:id]==6 && key==:eastern 
-        @magicNoE = ((34-v[:played])*3) 
+        @magicNoE = v[:points]+((34-v[:played])*3) 
       elsif v[:id]==6 && key==:western 
-        @magicNoW = ((34-v[:played])*3) 
+        @magicNoW = v[:points]+((34-v[:played])*3) 
       end
     end
   end
