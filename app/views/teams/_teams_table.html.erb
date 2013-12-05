@@ -7,13 +7,6 @@
 <body>
 
 
-<% magicNoE=0 %> 
-<% magicNoW=0 %> 
-
-<% def magic (inNo) %>
-  <%34-inNo%>
-<%end%>
-
 <% @confs.each do |key, value| %>
 <h4><%=key.capitalize%> Conference</h4>
 <table class="table table-striped table-condensed">
@@ -46,9 +39,9 @@
       <%end%>      
       <td> <%= v[:id] %></td>
       <td> <%if v[:id].between?(1, 5) %>
-            <% if key==:eastern && @magicNoE <= magic(v[:played])%>
+            <% if key==:eastern && @magicNoE <= v[:points]%>
               <%= "x - "+v[:name]%>
-             <% elsif key==:western && @magicNoW <= magic(v[:played])%>
+             <% elsif key==:western && @magicNoW <= v[:points]%>
              <%= "x - "+v[:name]  %>
              <% else%>
               <%= v[:name] %>
